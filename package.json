@@ -8,15 +8,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.6.2",
+    "formik": "^2.2.9",
+    "markdown-to-jsx": "^7.1.5",
     "next": "12.0.7",
+    "next-http-proxy-middleware": "^1.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "recipe-book-sdk": "^0.1.0"
   },
   "devDependencies": {
     "@types/node": "17.0.5",
     "@types/react": "17.0.38",
+    "autoprefixer": "^10.4.1",
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.7",
+    "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
+    "tailwindcss": "^3.0.8",
     "typescript": "4.5.4"
   }
 }
