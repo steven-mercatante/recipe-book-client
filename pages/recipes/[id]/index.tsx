@@ -20,6 +20,9 @@ export default function ViewRecipe({ recipe }: Props) {
       <div className="mb-8">
         <h1>{recipe.name}</h1>
         <p className="text-sm">
+          {/*TODO: swap this with "Save this recipe" if user is browsing someone else's recipe.
+          If user is not logged in, add a `?` icon with tooltip that says they'll need to register
+           a free account first*/}
           <Link href={`/recipes/${recipe.id}/edit`}>Edit this recipe</Link>
         </p>
       </div>
