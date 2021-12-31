@@ -1,19 +1,23 @@
 import { useField } from "formik";
 
-// TODO: show error message
-export default function TextField({ label, ...props }) {
+interface Props {
+  label: string;
+}
+
+// TODO: show error
+export default function TextField({ label, ...props }: Props) {
+  console.log(">>> props:", props);
   const [field, meta, helpers] = useField(props);
 
   return (
     <div>
-      <label>
-        {label}
-        <input
-          className="mb-5 rounded border-2 border-solid border-red-600"
-          {...field}
-          {...props}
-        />
-      </label>
+      <label htmlFor={props.name}>{label}</label>
+      <input
+        className="block mb-5 rounded border-2 border-solid border-red-600"
+        {...field}
+        {...props}
+        id={props.name}
+      />
     </div>
   );
 }

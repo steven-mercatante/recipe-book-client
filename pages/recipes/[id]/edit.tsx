@@ -15,7 +15,6 @@ interface Params extends ParsedUrlQuery {
 export default function EditRecipe({ recipe }: Props) {
   return (
     <div>
-      <h1>Edit Recipe</h1>
       <RecipeForm recipe={recipe} />
     </div>
   );
