@@ -40,11 +40,10 @@ export default function RecipeForm({ recipe }: Props) {
       }}
       onSubmit={handleSubmit}
     >
-      <Form>
+      <Form id="recipe-form">
         <TextField type="text" name="name" label="Name" />
         <TextareaField name="ingredients" label="Ingredients" />
         <TextareaField name="instructions" label="Instructions" />
-        <button type="submit">Save</button>
       </Form>
     </Formik>
   );

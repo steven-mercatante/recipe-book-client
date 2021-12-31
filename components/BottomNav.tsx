@@ -6,16 +6,32 @@ import BookmarkIcon from "./icons/BookmarkIcon";
 import SearchIcon from "./icons/SearchIcon";
 import { Routes } from "../constants";
 
+function submitRecipeForm() {
+  /**
+   * requestSubmit actually dispatches a submit event and triggers validation
+   * https://www.stefanjudis.com/today-i-learned/requestsubmit-offers-a-way-to-validate-a-form-before-submitting-it/
+   * https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit
+   */
+  document.querySelector<HTMLFormElement>("#recipe-form").requestSubmit();
+}
+
 export default function BottomNav() {
   const router = useRouter();
   const { user } = useUser();
 
   if (!user) return null;
 
-  if (router.pathname === Routes.EditRecipe) {
+  if (
+    router.pathname === Routes.EditRecipe ||
+    router.pathname === Routes.NewRecipe
+  ) {
     return (
       <div className="bottom-nav flex justify-center bg-red-200 fixed bottom-0 inset-x-0 p-3">
-        <button className="px-4 py-1 border-2 border-red-600 rounded-md">
+        <button
+          className="px-4 py-1 border-2 border-red-600 rounded-md"
+          onClick={submitRecipeForm}
+          type="submit"
+        >
           Save
         </button>
       </div>
