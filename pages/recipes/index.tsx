@@ -9,13 +9,15 @@ interface Props {
 
 function RecipesList({ recipes }: Props) {
   return (
-    <ul>
-      {recipes.map((recipe: Recipe) => (
-        <li key={recipe.id}>
-          <Link href={`/recipes/${recipe.id}`}>{recipe.name}</Link>
-        </li>
-      ))}
-    </ul>
+    <div className="recipes-list">
+      <ul>
+        {recipes.map((recipe: Recipe) => (
+          <li key={recipe.id}>
+            <Link href={`/recipes/${recipe.id}`}>{recipe.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
