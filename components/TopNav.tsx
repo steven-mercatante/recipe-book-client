@@ -7,7 +7,6 @@ import { Routes } from "../constants";
 export default function TopNav() {
   const router = useRouter();
 
-  console.log(router.pathname);
   let title;
   switch (router.pathname) {
     case Routes.ViewRecipes:

@@ -10,9 +10,11 @@ export default function TextareaField({ label, ...props }: Props) {
 
   return (
     <div>
-      <label htmlFor={props.name}>{label}</label>
+      <label htmlFor={props.name}>
+        <strong>{label}</strong>
+      </label>
       <textarea
-        className="block mb-5 rounded w-fit h-72 border-2 border-solid border-red-600"
+        className="block mb-5 rounded w-fit h-72 border-2 w-full"
         {...field}
         {...props}
         id={props.name}
