@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { recipesApi } from "api";
 import { Recipe } from "recipe-book-sdk";
 import { ParsedUrlQuery } from "querystring";
@@ -16,16 +17,21 @@ interface Params extends ParsedUrlQuery {
 export default function ViewRecipe({ recipe }: Props) {
   return (
     <div>
-      <h1>{recipe.name}</h1>
+      <div className="mb-8">
+        <h1>{recipe.name}</h1>
+        <p className="text-sm">
+          <Link href={`/recipes/${recipe.id}/edit`}>Edit this recipe</Link>
+        </p>
+      </div>
       {recipe.ingredients && (
         <div className="mt-4">
-          <h2 className="text-2xl mb-2">Instructions</h2>
+          <h2 className="text-2xl mb-2">Ingredients</h2>
           <ItemList items={splitByNewline(recipe.ingredients)} />
         </div>
       )}
       {recipe.instructions && (
-        <div className="mt-4">
-          <h2 className="text-2xl mb-2">Ingredients</h2>
+        <div className="mt-8">
+          <h2 className="text-2xl mb-2">Instructions</h2>
           <ItemList
             items={splitByNewline(recipe.instructions)}
             showStepNum={true}
