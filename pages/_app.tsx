@@ -16,7 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <UserProvider user={user}>
         <Nav />
-        <Component {...pageProps} />
+        <div className="container p-4">
+          <Component {...pageProps} />
+        </div>
       </UserProvider>
     </>
   );
