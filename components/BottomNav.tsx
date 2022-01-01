@@ -5,6 +5,7 @@ import HomeIcon from "./icons/HomeIcon";
 import BookmarkIcon from "./icons/BookmarkIcon";
 import SearchIcon from "./icons/SearchIcon";
 import { Routes } from "../constants";
+import CreateIcon from "./icons/CreateIcon";
 
 function submitRecipeForm() {
   /**
@@ -45,6 +46,13 @@ export default function BottomNav() {
           <Link href="/recipes">
             <a>
               <HomeIcon />
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/recipes/new">
+            <a>
+              <CreateIcon />
             </a>
           </Link>
         </li>
