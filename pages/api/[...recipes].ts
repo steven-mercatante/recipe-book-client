@@ -11,11 +11,15 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     },
     pathRewrite: [
       {
+        // @ts-ignore
         patternStr: /^\/api\/recipes\/(.*)/,
+        // @ts-ignore
         replaceStr: /\/recipes\/$1/,
       },
       {
+        // @ts-ignore
         patternStr: /^\/api\/recipes/,
+        // @ts-ignore
         replaceStr: /\/recipes\//,
       },
     ],

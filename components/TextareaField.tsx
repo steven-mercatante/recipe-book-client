@@ -2,11 +2,11 @@ import { FieldHookConfig, useField } from "formik";
 
 interface Props {
   label: string;
+  name: string;
 }
 
-// TODO: show error message
 export default function TextareaField({ label, ...props }: Props) {
-  const [field, meta, helpers] = useField(props);
+  const [field] = useField(props);
 
   return (
     <div>

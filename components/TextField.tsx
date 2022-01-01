@@ -2,11 +2,11 @@ import { useField } from "formik";
 
 interface Props {
   label: string;
+  name: string;
 }
 
-// TODO: show error
 export default function TextField({ label, ...props }: Props) {
-  const [field, meta, helpers] = useField(props);
+  const [field, meta] = useField(props);
 
   return (
     <div>
@@ -19,6 +19,9 @@ export default function TextField({ label, ...props }: Props) {
         {...props}
         id={props.name}
       />
+      {meta.touched && meta.error ? (
+        <div className="error">{meta.error}</div>
+      ) : null}
     </div>
   );
 }
