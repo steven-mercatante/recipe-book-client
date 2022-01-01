@@ -29,7 +29,7 @@ export const getServerSideProps = withPageAuthRequired({
     // but it'd be nice to _not_ have to pass Cookie header...
     // See: https://stackoverflow.com/questions/68056181/nextjs-auth0-get-data-in-getserversideprops
     const res = await recipesApi.listRecipes({
-      headers: { Cookie: context.req.headers.cookie },
+      headers: { Cookie: context.req.headers.cookie! },
     });
     const recipes = res.data;
     return { props: { recipes } };
