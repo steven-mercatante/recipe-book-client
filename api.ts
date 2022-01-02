@@ -1,8 +1,10 @@
 import { Configuration, RecipesApi } from "recipe-book-sdk";
 
-// TODO: fetch from env
-const basePath = "http://localhost:3000/api";
+const appHost =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : process.env.NEXT_PUBLIC_APP_HOST;
 
 export const recipesApi = new RecipesApi({
-  basePath,
+  basePath: `${appHost}/api`,
 } as Configuration);

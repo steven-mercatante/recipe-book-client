@@ -1,11 +1,15 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { useUser } from "@auth0/nextjs-auth0";
 import GearIcon from "./icons/GearIcon";
 import ArrowLeftIcon from "./icons/ArrowLeftIcon";
 import { Routes } from "../constants";
 
 export default function TopNav() {
   const router = useRouter();
+  const { user } = useUser();
+
+  if (!user) return null;
 
   let title;
   switch (router.pathname) {
