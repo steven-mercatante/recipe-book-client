@@ -9,7 +9,13 @@ RUN yarn install --frozen-lockfile
 # Rebuild the source code only when needed
 FROM node:alpine AS builder
 WORKDIR /app
-ENV NEXT_PUBLIC_APP_HOST https://www.mercmeals.com
+# NOTE: appVersion is passed in by the GitHub workflow and set as an ENV var in the container
+ARG appVersion
+ENV NEXT_PUBLIC_APP_VERSION $appVersion
+
+ARG appHost
+ENV NEXT_PUBLIC_APP_HOST $appHost
+
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline

@@ -11,6 +11,7 @@ export default handleAuth({
         },
       });
     } catch (error) {
+      // @ts-ignore
       res.status(error.status || 400).end(error.message);
     }
   },

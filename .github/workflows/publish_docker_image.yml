@@ -2,8 +2,8 @@ name: Publish Docker image
 
 on:
   push:
-    branches:
-      - 'main'
+    tags:
+      - 'v*'
 
 env:
   REGISTRY: ghcr.io
@@ -39,3 +39,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            appHost=https://www.mercmeals.com
+            appVersion=${{ github.sha }}

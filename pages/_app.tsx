@@ -18,6 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <div className="container p-4 mt-12 mb-12">
           <Component {...pageProps} />
         </div>
+        <p className="text-center"><small>Version: {process.env.NEXT_PUBLIC_APP_VERSION ?? "n/a"}</small></p>
         <BottomNav />
       </UserProvider>
     </>

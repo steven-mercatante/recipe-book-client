@@ -33,7 +33,9 @@ export default function TopNav() {
         </li>
         <li className="text-center">{title}</li>
         <li className="w-4">
-          <GearIcon />
+          <a href="/api/auth/logout">
+            <GearIcon />
+          </a>
         </li>
       </ul>
     </nav>
