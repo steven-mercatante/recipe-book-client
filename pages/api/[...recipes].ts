@@ -1,13 +1,26 @@
 import httpProxyMiddleware from "next-http-proxy-middleware";
 import { NextApiRequest, NextApiResponse } from "next";
-import { getAccessToken, withApiAuthRequired } from "@auth0/nextjs-auth0";
+import { getSession } from "next-auth/react";
+import { getToken } from "next-auth/jwt";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const accessTokenResp = await getAccessToken(req, res, {});
+  const session = await getSession({ req });
+
+  if (!session) {
+    // TODO: return 401 or 403
+  }
+
+  const secret = process.env.NEXTAUTH_SECRET!;
+  const jwt = await getToken({ req, secret });
+
+  // if (session) {
+  //   res.send([{ id: 42, name: "fake api result" }]);
+  // }
+
   return httpProxyMiddleware(req, res, {
     target: process.env.API_URL,
     headers: {
-      Authorization: `Bearer ${accessTokenResp.accessToken}`,
+      Authorization: `Bearer ${jwt}`,
     },
     pathRewrite: [
       {
@@ -26,4 +39,4 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   });
 }
 
-export default withApiAuthRequired(handler);
+export default handler;

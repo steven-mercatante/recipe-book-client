@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import type { NextPage } from "next";
 import { Routes } from "../constants";
-import { useUser } from "@auth0/nextjs-auth0";
-import { useRouter } from "next/router";
+// import { useUser } from "@auth0/nextjs-auth0";
+// import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
-  const router = useRouter();
-  const { user } = useUser();
-  useEffect(() => {
-    if (user) {
-      router.push(Routes.ViewRecipes);
-    }
-  }, [user]);
+  // const router = useRouter();
+  // const { user } = useUser();
+  // useEffect(() => {
+  //   if (user) {
+  //     router.push(Routes.ViewRecipes);
+  //   }
+  // }, [user]);
 
   return (
     <div>
