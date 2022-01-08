@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useUser } from "@auth0/nextjs-auth0";
 import GearIcon from "./icons/GearIcon";
@@ -33,9 +34,9 @@ export default function TopNav() {
         </li>
         <li className="text-center">{title}</li>
         <li className="w-4">
-          <a href="/api/auth/logout">
+          <Link href="/api/auth/logout" passHref>
             <GearIcon />
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
