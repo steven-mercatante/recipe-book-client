@@ -1,4 +1,4 @@
-import { Configuration, RecipesApi } from "recipe-book-sdk";
+import { Configuration, RecipesApi } from "recipe-book-api-client";
 
 const appHost =
   process.env.NODE_ENV === "development"

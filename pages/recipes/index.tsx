@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import { Recipe } from "recipe-book-sdk";
+import { Recipe } from "recipe-book-api-client";
 import { recipesApi } from "api";
 
 interface Props {

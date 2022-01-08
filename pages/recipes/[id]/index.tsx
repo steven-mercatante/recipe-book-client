@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { recipesApi } from "api";
-import { Recipe } from "recipe-book-sdk";
+import { Recipe } from "recipe-book-api-client";
 import { ParsedUrlQuery } from "querystring";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { splitByNewline } from "utils/text";
