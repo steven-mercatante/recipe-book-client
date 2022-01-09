@@ -34,7 +34,7 @@ export default function TopNav() {
         </li>
         <li className="text-center">{title}</li>
         <li className="w-4">
-          <Link href="/api/auth/logout" passHref>
+          <Link href={Routes.LogOut} passHref>
             <GearIcon />
           </Link>
         </li>
