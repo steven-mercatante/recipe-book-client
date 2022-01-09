@@ -1,4 +1,4 @@
-import { FieldHookConfig, useField } from "formik";
+import { useField } from "formik";
 
 interface Props {
   label: string;
@@ -14,7 +14,7 @@ export default function TextareaField({ label, ...props }: Props) {
         <strong>{label}</strong>
       </label>
       <textarea
-        className="block mb-5 rounded w-fit h-72 border-2 w-full"
+        className="block mb-5 rounded w-full h-72 border-2 w-full"
         {...field}
         {...props}
         id={props.name}
