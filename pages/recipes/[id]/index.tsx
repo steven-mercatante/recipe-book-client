@@ -26,6 +26,18 @@ export default function ViewRecipe({ recipe }: Props) {
           <Link href={`/recipes/${recipe.id}/edit`}>Edit this recipe</Link>
         </p>
       </div>
+      {recipe.tags && (
+        <div>
+          <span>Tagged with</span>
+          <ul className="flex">
+            {recipe.tags.map((tag) => (
+              <li className="text-sm mr-2" key={tag}>
+                {tag}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       {recipe.ingredients && (
         <div className="mt-4">
           <h2 className="text-2xl mb-2">Ingredients</h2>
