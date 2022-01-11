@@ -76,7 +76,7 @@ export default function RecipeForm({ recipe }: Props) {
             </button>
           )}
           <button
-            className="invisible lg:visible px-6 py-2 bg-green-300 text-green-900 rounded-md"
+            className="px-6 py-2 bg-green-300 text-green-900 rounded-md"
             type="submit"
           >
             <strong>Save</strong>
