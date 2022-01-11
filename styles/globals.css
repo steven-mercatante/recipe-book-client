@@ -11,6 +11,10 @@
   }
 }
 
+#__next {
+  @apply h-full;
+}
+
 html,
 body {
   padding: 0;
@@ -32,4 +36,8 @@ a {
   font-size: 1.2rem;
   font-weight: 600;
   margin: 0.3rem 0;
+}
+
+.debug {
+  border: 2px solid red;
 }

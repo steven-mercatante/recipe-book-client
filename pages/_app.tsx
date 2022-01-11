@@ -1,25 +1,21 @@
-import React from "react";
-import Head from "next/head";
 import type { AppProps } from "next/app";
 import { UserProvider } from "@auth0/nextjs-auth0";
-import TopNav from "components/TopNav";
-import BottomNav from "components/BottomNav";
 import "styles/globals.css";
+import Layout from "../components/Layout";
 
 export default function App({ Component, pageProps }: AppProps) {
+  /**
+   * pageProps.user is automatically set by children pages that use a combination
+   * of `withpageAuthRequired` and `getServerSideProps`.
+   */
+  const { user } = pageProps;
+
   return (
     <>
-      <Head>
-        <title>Recipes</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <UserProvider>
-        <TopNav />
-        <div className="container p-4 mt-12 mb-12">
+      <UserProvider user={user}>
+        <Layout>
           <Component {...pageProps} />
-        </div>
-        <p className="text-center"><small>Version: {process.env.NEXT_PUBLIC_APP_VERSION ?? "n/a"}</small></p>
-        <BottomNav />
+        </Layout>
       </UserProvider>
     </>
   );
