@@ -7,7 +7,7 @@ export default handleAuth({
         authorizationParams: {
           audience: process.env.AUTH0_AUDIENCE,
           // Add the `offline_access` scope to also get a Refresh Token
-          scope: "openid profile email",
+          scope: "openid profile email offline_access",
         },
       });
     } catch (error) {
