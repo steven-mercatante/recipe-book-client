@@ -5,6 +5,7 @@ import { ParsedUrlQuery } from "querystring";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { splitByNewline } from "utils/text";
 import ItemList from "components/ItemList";
+import { getRecipeTags } from "../../../utils/recipe";
 
 interface Props {
   recipe: Recipe;
@@ -15,6 +16,8 @@ interface Params extends ParsedUrlQuery {
 }
 
 export default function ViewRecipe({ recipe }: Props) {
+  const recipeTags = getRecipeTags(recipe);
+
   return (
     <div>
       <div className="mb-8">
@@ -26,11 +29,11 @@ export default function ViewRecipe({ recipe }: Props) {
           <Link href={`/recipes/${recipe.id}/edit`}>Edit this recipe</Link>
         </p>
       </div>
-      {recipe.tags && (
+      {recipeTags && (
         <div>
           <span>Tagged with</span>
           <ul className="flex">
-            {recipe.tags.map((tag) => (
+            {recipeTags.map((tag) => (
               <li className="text-sm mr-2" key={tag}>
                 {tag}
               </li>
