@@ -1,5 +1,7 @@
+import React from "react";
+
 interface Props {
-  children: React.ReactChild;
+  children: React.ReactNode;
 }
 
 export default function ContentContainer({ children }: Props) {

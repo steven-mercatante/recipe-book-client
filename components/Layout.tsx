@@ -16,7 +16,7 @@ const navigation = [
 ];
 
 interface Props {
-  children: React.ReactChild;
+  children: React.ReactNode;
 }
 
 export default function Layout({ children }: Props) {
