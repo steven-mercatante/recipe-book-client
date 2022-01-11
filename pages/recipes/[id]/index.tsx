@@ -29,7 +29,7 @@ export default function ViewRecipe({ recipe }: Props) {
           <Link href={`/recipes/${recipe.id}/edit`}>Edit this recipe</Link>
         </p>
       </div>
-      {recipeTags && (
+      {recipeTags?.length > 0 && (
         <div>
           <span>Tagged with</span>
           <ul className="flex">
