@@ -1,6 +1,6 @@
 // import { useEffect } from "react";
 import type { NextPage } from "next";
-import { Routes } from "../constants";
+import { Routes } from "../constants/routes";
 // import { useUser } from "@auth0/nextjs-auth0";
 // import { useRouter } from "next/router";
 

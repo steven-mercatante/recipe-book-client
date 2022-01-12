@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { UserProfile } from "@auth0/nextjs-auth0";
-import { Routes } from "../constants";
+import { Routes } from "../constants/routes";
 import UserAvatar from "./UserAvatar";
 import { INavItem } from "types/nav";
 

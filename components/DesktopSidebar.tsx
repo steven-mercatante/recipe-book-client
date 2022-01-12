@@ -1,4 +1,4 @@
-import { Routes } from "../constants";
+import { Routes } from "../constants/routes";
 import Link from "next/link";
 import NavItem, { Variant } from "./NavItem";
 import UserAvatar from "./UserAvatar";

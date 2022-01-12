@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0";
 import { PlusIcon, ViewListIcon } from "@heroicons/react/outline";
 import MobileSidebar from "./MobileSidebar";
-import { Routes } from "../constants";
+import { Routes } from "../constants/routes";
 import DesktopSidebar from "./DesktopSidebar";
 import ContentContainer from "./ContentContainer";
 import MobileTopNav from "./MobileTopNav";

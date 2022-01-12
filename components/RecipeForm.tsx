@@ -5,7 +5,7 @@ import TextField from "./TextField";
 import { Recipe } from "recipe-book-api-client";
 import TextareaField from "./TextareaField";
 import { useRouter } from "next/router";
-import { Routes } from "../constants";
+import { Routes } from "../constants/routes";
 import DeleteRecipeDialog from "./DeleteRecipeDialog";
 
 interface Props {
