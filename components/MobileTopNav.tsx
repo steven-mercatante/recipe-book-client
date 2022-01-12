@@ -1,5 +1,7 @@
-import { MenuIcon } from "@heroicons/react/outline";
 import React from "react";
+import { MenuIcon } from "@heroicons/react/outline";
+import Link from "next/link";
+import { Routes } from "constants/routes";
 
 interface Props {
   setSidebarOpen: (b: boolean) => void;
@@ -10,7 +12,7 @@ export default function MobileTopNav({ setSidebarOpen }: Props) {
     <div className="lg:hidden">
       <div className="flex items-center justify-between bg-gray-50 border-b border-gray-200 px-4 py-1.5">
         <div>
-          <strong>Merc Meals</strong>
+          <Link href={Routes.Home}>Merc Meals</Link>
         </div>
         <div>
           <button
