@@ -6,8 +6,10 @@ import { splitByNewline } from "utils/text";
 import ItemList from "components/ItemList";
 import { getRecipeTags } from "../../../utils/recipe";
 import { GetServerSidePropsContext } from "next";
+import { getSession } from "@auth0/nextjs-auth0";
 
 interface Props {
+  canUserEditRecipe: boolean;
   recipe: Recipe;
 }
 
@@ -15,7 +17,7 @@ interface Params extends ParsedUrlQuery {
   id: string;
 }
 
-export default function ViewRecipe({ recipe }: Props) {
+export default function ViewRecipe({ canUserEditRecipe, recipe }: Props) {
   const recipeTags = getRecipeTags(recipe);
 
   return (
@@ -26,7 +28,9 @@ export default function ViewRecipe({ recipe }: Props) {
           {/*TODO: swap this with "Save this recipe" if user is browsing someone else's recipe.
           If user is not logged in, add a `?` icon with tooltip that says they'll need to register
            a free account first*/}
-          <Link href={`/recipes/${recipe.id}/edit`}>Edit this recipe</Link>
+          {canUserEditRecipe && (
+            <Link href={`/recipes/${recipe.id}/edit`}>Edit this recipe</Link>
+          )}
         </p>
       </div>
       {recipeTags?.length > 0 && (
@@ -63,7 +67,31 @@ export default function ViewRecipe({ recipe }: Props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   // TODO: handle error state
   const { id } = context.params as Params;
-  const res = await recipesApi.retrieveRecipe(id);
+
+  let options = {};
+  if (context.req.headers.cookie) {
+    options = {
+      headers: { Cookie: context.req.headers.cookie },
+    };
+  }
+
+  const res = await recipesApi.retrieveRecipe(id, options);
   const recipe = res.data;
-  return { props: { recipe } };
+
+  /**
+   * Anonymous users should never see link to Edit Recipe.
+   * If `session` is null, the user is anonymous.
+   */
+  let canUserEditRecipe = false;
+  const session = getSession(context.req, context.res);
+  if (session) {
+    const canUserEditRecipeResp = await recipesApi.canUserEditRecipe(
+      id,
+      options
+    );
+    // @ts-ignore
+    canUserEditRecipe = canUserEditRecipeResp.data["can_edit"];
+  }
+
+  return { props: { recipe, canUserEditRecipe } };
 }
