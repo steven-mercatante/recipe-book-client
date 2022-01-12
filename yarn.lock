@@ -3051,10 +3051,10 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
-recipe-book-api-client@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/recipe-book-api-client/-/recipe-book-api-client-0.4.0.tgz#65f1090e4f6abcf0684eae7f9274aadf1fc3c045"
-  integrity sha512-GEWS/ySoqjSZf1KR5W4MgZYpt5LjSLTSyJQRQwf8aQLEVPSqJ4bYT5eVijkPPvaaof/ipVEIGaYsKHo71PIpxg==
+recipe-book-api-client@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/recipe-book-api-client/-/recipe-book-api-client-0.5.0.tgz#d15f76bba9569aff02f6b7625a0e1240faaa11da"
+  integrity sha512-HH5ELNnP0ztgfSsQc3BE6kgQf/a67BQgr+hZhEtHmrrt22K8zYID/K1hyrBwlHUP1RIT50/xF1pI+zZXaT0afg==
   dependencies:
     axios "^0.24.0"
 
