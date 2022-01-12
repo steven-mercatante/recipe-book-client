@@ -5,6 +5,7 @@ import { ParsedUrlQuery } from "querystring";
 import { splitByNewline } from "utils/text";
 import ItemList from "components/ItemList";
 import { getRecipeTags } from "../../../utils/recipe";
+import { GetServerSidePropsContext } from "next";
 
 interface Props {
   recipe: Recipe;
@@ -59,7 +60,7 @@ export default function ViewRecipe({ recipe }: Props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   // TODO: handle error state
   const { id } = context.params as Params;
   const res = await recipesApi.retrieveRecipe(id);
