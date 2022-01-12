@@ -1,3 +1,7 @@
+/**
+ * This catch all route handles all Recipe endpoints _except_
+ * GETing a Recipe to view it. See /api/recipes/[slug].ts for that.
+ */
 import httpProxyMiddleware from "next-http-proxy-middleware";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getAccessToken, withApiAuthRequired } from "@auth0/nextjs-auth0";
