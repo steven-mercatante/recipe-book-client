@@ -1,4 +1,5 @@
 import httpProxyMiddleware from "next-http-proxy-middleware";
+import { withSentry } from "@sentry/nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getAccessToken } from "@auth0/nextjs-auth0";
 
@@ -42,4 +43,4 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   return httpProxyMiddleware(req, res, proxyConfig);
 }
 
-export default handler;
+export default withSentry(handler);
