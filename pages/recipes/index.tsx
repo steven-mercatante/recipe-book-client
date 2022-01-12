@@ -13,9 +13,7 @@ function RecipesList({ recipes }: Props) {
       <ul>
         {recipes.map((recipe: Recipe) => (
           <li key={recipe.id}>
-            <Link href={`/recipes/${recipe.public_id}-${recipe.slug}`}>
-              {recipe.name}
-            </Link>
+            <Link href={`/recipes/${recipe.slug}`}>{recipe.name}</Link>
           </li>
         ))}
       </ul>
