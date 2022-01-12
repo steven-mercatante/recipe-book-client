@@ -29,7 +29,7 @@ export default function ViewRecipe({ canUserEditRecipe, recipe }: Props) {
           If user is not logged in, add a `?` icon with tooltip that says they'll need to register
            a free account first*/}
           {canUserEditRecipe && (
-            <Link href={`/recipes/${recipe.id}/edit`}>Edit this recipe</Link>
+            <Link href={`/recipes/${recipe.slug}/edit`}>Edit this recipe</Link>
           )}
         </p>
       </div>

@@ -31,15 +31,14 @@ export default function RecipeForm({ recipe }: Props) {
         ingredients: values.ingredients,
         instructions: values.instructions,
       });
-      await router.push(Routes.ViewRecipe.replace("[id]", recipe.id));
+      await router.push(Routes.ViewRecipe.replace("[id]", recipe.slug!));
     } else {
       const resp = await recipesApi.createRecipe({
         name: values.name,
         ingredients: values.ingredients,
         instructions: values.instructions,
       });
-      // @ts-ignore
-      await router.push(Routes.ViewRecipe.replace("[id]", resp.data.id));
+      await router.push(Routes.ViewRecipe.replace("[id]", resp.data.slug!));
     }
   }
 
