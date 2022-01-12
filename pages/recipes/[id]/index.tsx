@@ -4,9 +4,11 @@ import { Recipe } from "recipe-book-api-client";
 import { ParsedUrlQuery } from "querystring";
 import { splitByNewline } from "utils/text";
 import ItemList from "components/ItemList";
-import { getRecipeTags } from "../../../utils/recipe";
+import { getRecipeTags } from "utils/recipe";
 import { GetServerSidePropsContext } from "next";
 import { getSession } from "@auth0/nextjs-auth0";
+import { useRouter } from "next/router";
+import { Routes } from "constants/routes";
 
 interface Props {
   canUserEditRecipe: boolean;
@@ -23,7 +25,15 @@ export default function ViewRecipe({
   canUserSaveRecipe,
   recipe,
 }: Props) {
+  const router = useRouter();
   const recipeTags = getRecipeTags(recipe);
+
+  async function cloneRecipe() {
+    const resp = await recipesApi.copyForUserRecipe(recipe.id!);
+    const newSlug = resp.data.slug;
+    await router.push(Routes.ViewRecipe.replace("[id]", newSlug!));
+    // TODO: show a toast upon successful clone
+  }
 
   return (
     <div>
@@ -41,7 +51,10 @@ export default function ViewRecipe({
             </Link>
           )}
           {canUserSaveRecipe && (
-            <button className="mt-4 px-4 py-2 rounded-md bg-emerald-500 text-emerald-50">
+            <button
+              className="mt-4 px-4 py-2 rounded-md bg-emerald-500 text-emerald-50"
+              onClick={cloneRecipe}
+            >
               Save Recipe to My Cookbook
             </button>
           )}
