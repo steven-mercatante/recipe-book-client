@@ -10,6 +10,7 @@ import { getSession } from "@auth0/nextjs-auth0";
 
 interface Props {
   canUserEditRecipe: boolean;
+  canUserSaveRecipe: boolean;
   recipe: Recipe;
 }
 
@@ -17,7 +18,11 @@ interface Params extends ParsedUrlQuery {
   id: string;
 }
 
-export default function ViewRecipe({ canUserEditRecipe, recipe }: Props) {
+export default function ViewRecipe({
+  canUserEditRecipe,
+  canUserSaveRecipe,
+  recipe,
+}: Props) {
   const recipeTags = getRecipeTags(recipe);
 
   return (
@@ -29,7 +34,16 @@ export default function ViewRecipe({ canUserEditRecipe, recipe }: Props) {
           If user is not logged in, add a `?` icon with tooltip that says they'll need to register
            a free account first*/}
           {canUserEditRecipe && (
-            <Link href={`/recipes/${recipe.slug}/edit`}>Edit this recipe</Link>
+            <Link href={`/recipes/${recipe.slug}/edit`}>
+              <a className="inline-block mt-4 px-4 py-2 rounded-md bg-sky-500 text-sky-50">
+                Edit this recipe
+              </a>
+            </Link>
+          )}
+          {canUserSaveRecipe && (
+            <button className="mt-4 px-4 py-2 rounded-md bg-emerald-500 text-emerald-50">
+              Save Recipe to My Cookbook
+            </button>
           )}
         </p>
       </div>
@@ -83,6 +97,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
    * If `session` is null, the user is anonymous.
    */
   let canUserEditRecipe = false;
+  let canUserSaveRecipe = false;
   const session = getSession(context.req, context.res);
   if (session) {
     const canUserEditRecipeResp = await recipesApi.canUserEditRecipe(
@@ -91,7 +106,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     );
     // @ts-ignore
     canUserEditRecipe = canUserEditRecipeResp.data["can_edit"];
+    /**
+     * The user can save (clone) a recipe if:
+     * - they're logged in
+     * - they're not editors (owners) of the recipe
+     */
+    canUserSaveRecipe = !canUserEditRecipe;
   }
 
-  return { props: { recipe, canUserEditRecipe } };
+  return { props: { recipe, canUserEditRecipe, canUserSaveRecipe } };
 }
