@@ -2,8 +2,14 @@ import httpProxyMiddleware from "next-http-proxy-middleware";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getAccessToken } from "@auth0/nextjs-auth0";
 
-const proxyConfig = {
-  target: process.env.API_URL,
+interface ProxyConfig {
+  target: string;
+  headers?: unknown;
+  pathRewrite: unknown;
+}
+
+const proxyConfig: ProxyConfig = {
+  target: process.env.API_URL!,
   pathRewrite: [
     {
       // @ts-ignore
