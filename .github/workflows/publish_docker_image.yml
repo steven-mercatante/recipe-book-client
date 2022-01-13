@@ -12,6 +12,7 @@ env:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    environment: production
     permissions:
       contents: read
       packages: write
@@ -42,3 +43,4 @@ jobs:
           build-args: |
             appHost=https://www.mercmeals.com
             appVersion=${{ github.sha }}
+            sentryAuthToken=${{ secrets.SENTRY_AUTH_TOKEN }}
