@@ -16,6 +16,9 @@ ENV NEXT_PUBLIC_APP_VERSION $appVersion
 ARG appHost
 ENV NEXT_PUBLIC_APP_HOST $appHost
 
+ARG sentryAuthToken
+ENV SENTRY_AUTH_TOKEN $sentryAuthToken
+
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
