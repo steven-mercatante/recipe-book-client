@@ -43,4 +43,5 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   return httpProxyMiddleware(req, res, proxyConfig);
 }
 
-export default withSentry(handler);
+// export default withSentry(handler);
+export default handler;
