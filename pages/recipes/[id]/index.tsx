@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import { recipesApi } from "api";
 import { Recipe } from "recipe-book-api-client";
@@ -37,6 +38,9 @@ export default function ViewRecipe({
 
   return (
     <div>
+      <Head>
+        <title>{recipe.name} | Merc Meals</title>
+      </Head>
       <div className="mb-8">
         <h1>{recipe.name}</h1>
         <p className="text-sm">
